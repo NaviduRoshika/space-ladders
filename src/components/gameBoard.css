@@ -1,0 +1,32 @@
+/* @media (min-width: 992px){
+    .container-lg , .container-sm{
+        max-width: 720px;
+   }
+} */
+
+@media only screen and (min-width: 992px) {
+    /* For tablets: */
+    #gameBoard{
+        max-width: 720px;
+   }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    /* For tablets: */
+    #gameBoard{
+        max-width: 720px;
+   }
+  }
+
+  #gameBoard{
+      background: black;
+  }
+
+  .snake1{
+      z-index: 1;
+      
+  }
+  .snake1 img{
+    max-width: 100%;
+    height: auto;
+  }

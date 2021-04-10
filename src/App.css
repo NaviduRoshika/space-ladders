@@ -1,0 +1,83 @@
+@media only screen and (min-width: 992px) {
+  #gameBox {
+    height: 679px;
+    width: 1000px;
+    margin-top: 39px;
+  }
+}
+
+@media (min-width: 576px) and (max-width :992px) {
+  .players {
+    font-size: 1rem;
+  }
+  .score{
+    font-size: 1rem;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+.particles{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+@font-face {
+  font-family: 'Starjedi';
+  font-style: normal;
+  font-weight: normal;
+  src: local('./components/fonts/starjedi/Starjedi.ttf'), url('./components/fonts/starjedi/Starjedi.ttf') format('woff');
+  }
+
+.header{
+  font-family:'Starjedi';
+  font-weight: 200;
+  color: #c0c30c;
+}
+
+.roll{
+  /* -webkit-text-stroke-color: black; */
+  /* -webkit-text-stroke-width: thick; */
+  font-family: sans-serif;
+  color: darkgrey;
+}
+
+/* element.style {
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: thick;
+} */
+
+.menu-button{
+  position: fixed;
+  top: 0%;
+  left: 0%;
+}
+
+.menu-screen-on{
+  width: 100vw;
+  height: 100vh;
+  background-color:#95a0a057;
+  position: fixed;
+  z-index: 5;
+  left: 0%;
+  top: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-screen-off{
+  display: none;
+}
+
+.menu-div{
+  width: 300px;
+  height:auto;
+  background-color: azure;
+}

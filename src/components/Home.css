@@ -1,0 +1,11 @@
+.box{
+    top:27%;
+    left: 20%;
+}
+
+.mode-menu li:hover {color: rgb(206, 219, 15);}
+
+
+li{
+    cursor: pointer;
+}

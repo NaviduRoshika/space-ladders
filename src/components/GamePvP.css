@@ -1,0 +1,22 @@
+.menu-button{
+    position: fixed;
+    top: 5%;
+}
+
+.menu-screen-on{
+    width: 100vw;
+    height: 100vh;
+    background-color:#95a0a057;
+    position: fixed;
+    z-index: 5;
+    left: 0%;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-screen-off{
+    display: none;
+}
+
