@@ -81,3 +81,7 @@ html, body {
   height:auto;
   background-color: azure;
 }
+
+#git-link{
+  color:#124277 !important;
+}

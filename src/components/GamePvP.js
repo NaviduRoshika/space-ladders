@@ -180,7 +180,7 @@ class GAmePvP extends React.Component{
 
 
       return (
-          <div className="container header animated zoomIn mt-sm-5 p-sm-3">
+          <div className="container header animated zoomIn mt-sm-5 p-sm-3 mt-5">
            <div className="row">
             <div className="col text-center bg-se">
             <h2>SPACE LADDERS</h2>

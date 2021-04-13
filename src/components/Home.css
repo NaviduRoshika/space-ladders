@@ -3,9 +3,17 @@
     left: 20%;
 }
 
-.mode-menu li:hover {color: rgb(206, 219, 15);}
+.play-mode:hover {color: rgb(206, 219, 15);}
 
 
 li{
     cursor: pointer;
+}
+
+a{
+    color: black !important;
+}
+
+a:hover {
+    text-decoration: none !important;
 }

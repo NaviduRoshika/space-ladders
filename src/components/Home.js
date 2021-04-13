@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './Home.css';
 const Home = ({onRouteChange})=>{
     return(
@@ -9,8 +15,8 @@ const Home = ({onRouteChange})=>{
         <h3 className="card-title  text-center header">WELCoME To</h3>
         <h1 className="card-title  text-center header">SPACE LADDERS</h1>
         <ul className="list-group list-group-flush mode-menu">
-          <li className="list-group-item bg-secondary alert alert-dark" onClick={()=>onRouteChange("pvp")}><span><b>PLAYER1 VS PLAYER2</b></span></li>
-          <li className="list-group-item bg-secondary alert alert-dark" onClick={()=>onRouteChange("pva")}><span><b>PLAYER VS ALEX</b></span></li>
+          <li className="list-group-item bg-secondary alert alert-dark" onClick={()=>onRouteChange("pvp")}><Link to="/pvp"> <span class="play-mode"><b>PLAYER 1 VS PLAYER 2</b></span></Link></li>
+          <li className="list-group-item bg-secondary alert alert-dark" onClick={()=>onRouteChange("pva")}><Link to="/pva"> <span class="play-mode"><b>PLAYER VS ALEX</b></span></Link></li>
           <li className="list-group-item bg-secondary alert alert-dark"><span style={{color:"#8c8181"}}><b>PLAYER VS FRIENDS</b></span></li>
         </ul>
       </div>

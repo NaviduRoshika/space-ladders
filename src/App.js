@@ -11,7 +11,12 @@ import Particles from 'react-particles-js';
 import {particleParams} from './components/particleParams';
 import UIfx from 'uifx';
 import rollAudio from './components/audio/click2.mp3';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class App extends Component {
   constructor(props){
@@ -21,7 +26,7 @@ class App extends Component {
       menuOpen:false,
       sound:"on",
       rollSound:true,
-      rollSoundValue:0.2,
+      rollSoundValue:0.1,
       soundProps:[
         {
           url:introAudio, playStatus:"PLAYING", volume:20, loop:true
@@ -31,6 +36,7 @@ class App extends Component {
         }
       ]
     }
+    this.onMenuButtonClick = this.onMenuButtonClick.bind(this);
   
   }
   
@@ -71,7 +77,7 @@ class App extends Component {
       if (this.state.rollSound) {
         this.setState({rollSound:false,rollSoundValue:0.00001});
       }else{
-        this.setState({rollSound:true,rollSoundValue:0.2});
+        this.setState({rollSound:true,rollSoundValue:0.1});
       }
 
   }
@@ -95,71 +101,154 @@ class App extends Component {
       )
       
       return (
-      <div className="d-flex justify-content-sm-center">
-      <Particles style={{backgroundColor:"black"}} params={particleParams} className="particles"/>
-        <Sound url={soundProps.url} playStatus={soundProps.playStatus} volume={soundProps.volume} loop={true}/>
-        <div>
-            {/* <div className="position-fixed" style={{ bottom: "95%",right: "3%",zIndex:1}}>
-            <label style={{marginRight:"8px"}}>Background Music</label>
-            <input id="sound" type="checkBox" onClick={this.playPause} value="PAUSE" checked={this.state.sound}/>
-            </div> */}
-            <div className="menu-button">
-            <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
-             className="btn btn-dark btn-lg" 
-             disabled={false} >MENU</button>
+          <Router>
+              <div className="d-flex justify-content-sm-center">
+              <Particles style={{backgroundColor:"black"}} params={particleParams} className="particles"/>
+              <Sound url={soundProps.url} muted="muted" playStatus={soundProps.playStatus} volume={soundProps.volume} loop={true}/>
+                <div>
+                {/* <div className="position-fixed" style={{ bottom: "95%",right: "3%",zIndex:1}}>
+                   <label style={{marginRight:"8px"}}>Background Music</label>
+                   <input id="sound" type="checkBox" onClick={this.playPause} 
+                    // value="PAUSE" 
+                   checked={this.state.sound}/>
+                </div> */}
+                <Menu menuScreenClass={menuScreenClass} 
+                      playPause={this.playPause}
+                      onMenuButtonClick={this.onMenuButtonClick}
+                      sound={this.state.sound}
+                      rollSound={this.state.rollSound}
+                      rollSoundChange={this.rollSoundChange}
+                />
+               {/* <div className="menu-button">
+               <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
+               className="btn btn-dark btn-lg" 
+               disabled={false} >MENU</button>
+              </div> */}
+              {/* <div id="menu-screen" className={menuScreenClass}> */}
+              {/* <div id="menu-div" className="card menu-div animated zoomIn" style={{backgroundColor:"#131313"}}> */}
+                  {/* <img class="card-img-top" src="..." alt="Card image cap"/> */}
+                 {/* <div className="card-body">
+                    <h3 className="card-title  text-center header">MENu</h3>
+                    <ul className="list-group list-group-flush">
+                     <li className="list-group-item bg-secondary alert alert-dark">
+                       <span><b>BACKGROUND SOUND</b></span>
+                       <input id="sound" type="checkBox" onClick={this.playPause} 
+                      //  value="PAUSE"
+                       checked={this.state.sound}
+                        style={{marginLeft:"15px"}}/>
+                      </li>
+                     <li className="list-group-item bg-secondary alert alert-dark">
+                       <span><b>ROLLING SOUNG</b></span>
+                       <input id="sound" type="checkBox" onClick={this.rollSoundChange} 
+                              value="PAUSE" checked={this.state.rollSound}
+                              style={{marginLeft:"15px"}}/>
+                      </li>
+                     <li className="list-group-item bg-secondary alert alert-dark">
+                         <ul style={{paddingLeft:"5px",listStyleType:"disc"}}>
+                           <b>
+                           <li>Spaceships of the <span style={{color:'#e21414'}}>Red Planet</span> & 
+                           <span style={{color:'yellow'}}>Yellow Planet</span> want to go to The Sector 64</li>
+                           <li>The first spaceship which arrives at sector 64 will win the space race</li>
+                           <li>Some sectors have connected with WORMHOLES</li>
+                           <li>If a spaceship enters a BLACKHOLE it will come out from the relevant WHITEHOLE</li>
+                           </b>
+                         </ul>
+                         <spn>by <a href="https://github.com/NaviduRoshika" style={{color:"#124277"}} target="_blank">NaviduRoshika</a></spn>
+                      </li>
+                   </ul>
+                   <div className="back-button">
+                      <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
+                       className="btn btn-dark btn-lg" 
+                       disabled={false} >BACK</button>
+                    </div>
+                 </div>
             </div>
-            <div id="menu-screen" className={menuScreenClass}>
-                <div id="menu-div" className="card menu-div animated zoomIn" style={{backgroundColor:"#131313"}}>
-                      {/* <img class="card-img-top" src="..." alt="Card image cap"/> */}
-                     <div className="card-body">
-                        <h3 className="card-title  text-center header">MENu</h3>
-                        <ul className="list-group list-group-flush">
-                         <li className="list-group-item bg-secondary alert alert-dark">
-                           <span><b>BACKGROUND SOUND</b></span>
-                           <input id="sound" type="checkBox" onClick={this.playPause} 
-                           value="PAUSE" checked={this.state.sound}
-                            style={{marginLeft:"15px"}}/>
-                          </li>
-                         <li className="list-group-item bg-secondary alert alert-dark">
-                           <span><b>ROLLING SOUNG</b></span>
-                           <input id="sound" type="checkBox" onClick={this.rollSoundChange} 
-                                  value="PAUSE" checked={this.state.rollSound}
-                                  style={{marginLeft:"15px"}}/>
-                          </li>
-                         <li className="list-group-item bg-secondary alert alert-dark">
-                             <ul style={{paddingLeft:"5px",listStyleType:"disc"}}>
-                               <b>
-                               <li>Spaceships of the <span style={{color:'#e21414'}}>Red Planet</span> & 
-                               <span style={{color:'yellow'}}>Yellow Planet</span> want to go to The Sector 64</li>
-                               <li>The first spaceship which arrives at sector 64 will win the space race</li>
-                               <li>Some sectors have connected with WORMHOLES</li>
-                               <li>If a spaceship enters a BLACKHOLE it will come out from the relevant WHITEHOLE</li>
-                               </b>
-                             </ul>
-                             <spn>by <a href="https://github.com/NaviduRoshika" style={{color:"#124277"}} target="_blank">NaviduRoshika</a></spn>
-                          </li>
-                       </ul>
-                       <div className="back-button">
-                          <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
-                           className="btn btn-dark btn-lg" 
-                           disabled={false} >BACK</button>
-                        </div>
-                     </div>
-                </div>
+        </div> */}
+        <Switch>
+              <Route path="/pvp">
+              <GamePvP mode={"pvp"} rollP={roll}/>
+              </Route>
+              <Route path="/pva">
+              <GamePvP rollP={roll} mode={"pva"}/>
+              </Route>
+              <Route path="/">
+                <Home onRouteChange={this.onRouteChange}/>
+               </Route>
+            </Switch>
+            </div> 
             </div>
-            {this.state.route === "home" ? <Home onRouteChange={this.onRouteChange}/>
-            :this.state.route === "pvp"?<GamePvP mode={"pvp"} rollP={roll}/>:<GamePvP rollP={roll} mode={"pva"}/>}
-        </div> 
-      </div>
-    );
+           
+          </Router>
+      );
  }
 
 
 }
 
 
-export default App;
+const Menu =({menuScreenClass,playPause,onMenuButtonClick,sound,rollSoundChange,rollSound})=> {
+  // return <h2>Home</h2>;
+  return (
+    <>
+    <div className="menu-button">
+        <button type="button" onClick={()=>{onMenuButtonClick()}} 
+                className="btn btn-dark" 
+                disabled={false} >
+                MENU
+        </button>
+    </div>
+              <div id="menu-screen" className={menuScreenClass}>
+              <div id="menu-div" className="card menu-div animated zoomIn" style={{backgroundColor:"#131313"}}>
+                  {/* <img class="card-img-top" src="..." alt="Card image cap"/> */}
+                 <div className="card-body">
+                    <h3 className="card-title  text-center header">MENu</h3>
+                    <ul className="list-group list-group-flush">
+                     <li className="list-group-item bg-secondary alert alert-dark">
+                       <span><b>BACKGROUND SOUND</b></span>
+                       <input id="sound" type="checkBox" onClick={playPause} 
+                      //  value="PAUSE"
+                       checked={sound}
+                        style={{marginLeft:"15px"}}/>
+                      </li>
+                     <li className="list-group-item bg-secondary alert alert-dark">
+                       <span><b>ROLLING SOUNG</b></span>
+                       <input id="sound" type="checkBox" onClick={rollSoundChange} 
+                              value="PAUSE" checked={rollSound}
+                              style={{marginLeft:"15px"}}/>
+                      </li>
+                     <li className="list-group-item bg-secondary alert alert-dark">
+                         <ul style={{paddingLeft:"5px",listStyleType:"disc"}}>
+                           <b>
+                           <li>Spaceships of the <span style={{color:'#e21414'}}>Red Planet</span> & 
+                           <span style={{color:'yellow'}}>Yellow Planet</span> want to go to The Sector 64</li>
+                           <li>The first spaceship which arrives at sector 64 will win the space race</li>
+                           <li>Some sectors have connected with WORMHOLES</li>
+                           <li>If a spaceship enters a BLACKHOLE it will come out from the relevant WHITEHOLE</li>
+                           </b>
+                         </ul>
+                         <span>by <a id="git-link" href="https://github.com/NaviduRoshika"  target="_blank">NaviduRoshika</a></span>
+                      </li>
+                   </ul>
+                   <div className="back-button">
+                      <button type="button" onClick={()=>{onMenuButtonClick()}} 
+                       className="btn btn-dark" 
+                       disabled={false} >BACK</button>
+                      <Link to="/"><button type="button" 
+                      onClick={()=>{onMenuButtonClick()}}
+                       className="btn btn-dark ml-3" 
+                       disabled={false} >
+                        HOME
+                      </button></Link> 
+                    </div>
+                 </div>
+            </div>
+        </div>
+        </>
+  );
+}
 
+
+export default App;
 
 
 
@@ -219,3 +308,66 @@ export default App;
 // const purple = "linear-gradient(to bottom right, #6600cc 1%, #9966ff 126%)"; //purple
 // const bluegreen = "linear-gradient(to bottom right, #003366 1%, #009999 126%)";  //blue green
 // const orange  = "linear-gradient(to bottom right, #ff6600 1%, #ff9966 126%)";  //orange
+
+
+// return (
+//   <div className="d-flex justify-content-sm-center">
+//   <Particles style={{backgroundColor:"black"}} params={particleParams} className="particles"/>
+//     <Sound url={soundProps.url} muted="muted" playStatus={soundProps.playStatus} volume={soundProps.volume} loop={true}/>
+//     <div>
+//         <div className="position-fixed" style={{ bottom: "95%",right: "3%",zIndex:1}}>
+//         <label style={{marginRight:"8px"}}>Background Music</label>
+//         <input id="sound" type="checkBox" onClick={this.playPause} 
+//         // value="PAUSE" 
+//         checked={this.state.sound}/>
+//         </div>
+//         <div className="menu-button">
+//         <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
+//          className="btn btn-dark btn-lg" 
+//          disabled={false} >MENU</button>
+//         </div>
+//         <div id="menu-screen" className={menuScreenClass}>
+//             <div id="menu-div" className="card menu-div animated zoomIn" style={{backgroundColor:"#131313"}}>
+//                   {/* <img class="card-img-top" src="..." alt="Card image cap"/> */}
+//                  <div className="card-body">
+//                     <h3 className="card-title  text-center header">MENu</h3>
+//                     <ul className="list-group list-group-flush">
+//                      <li className="list-group-item bg-secondary alert alert-dark">
+//                        <span><b>BACKGROUND SOUND</b></span>
+//                        <input id="sound" type="checkBox" onClick={this.playPause} 
+//                       //  value="PAUSE"
+//                        checked={this.state.sound}
+//                         style={{marginLeft:"15px"}}/>
+//                       </li>
+//                      <li className="list-group-item bg-secondary alert alert-dark">
+//                        <span><b>ROLLING SOUNG</b></span>
+//                        <input id="sound" type="checkBox" onClick={this.rollSoundChange} 
+//                               value="PAUSE" checked={this.state.rollSound}
+//                               style={{marginLeft:"15px"}}/>
+//                       </li>
+//                      <li className="list-group-item bg-secondary alert alert-dark">
+//                          <ul style={{paddingLeft:"5px",listStyleType:"disc"}}>
+//                            <b>
+//                            <li>Spaceships of the <span style={{color:'#e21414'}}>Red Planet</span> & 
+//                            <span style={{color:'yellow'}}>Yellow Planet</span> want to go to The Sector 64</li>
+//                            <li>The first spaceship which arrives at sector 64 will win the space race</li>
+//                            <li>Some sectors have connected with WORMHOLES</li>
+//                            <li>If a spaceship enters a BLACKHOLE it will come out from the relevant WHITEHOLE</li>
+//                            </b>
+//                          </ul>
+//                          <spn>by <a href="https://github.com/NaviduRoshika" style={{color:"#124277"}} target="_blank">NaviduRoshika</a></spn>
+//                       </li>
+//                    </ul>
+//                    <div className="back-button">
+//                       <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
+//                        className="btn btn-dark btn-lg" 
+//                        disabled={false} >BACK</button>
+//                     </div>
+//                  </div>
+//             </div>
+//         </div>
+//         {this.state.route === "home" ? <Home onRouteChange={this.onRouteChange}/>
+//         :this.state.route === "pvp"?<GamePvP mode={"pvp"} rollP={roll}/>:<GamePvP rollP={roll} mode={"pva"}/>}
+//     </div> 
+//   </div>
+// );
