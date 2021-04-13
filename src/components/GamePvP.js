@@ -185,24 +185,7 @@ class GAmePvP extends React.Component{
             <div className="col text-center bg-se">
             <h2>SPACE LADDERS</h2>
             </div>
-            {/* <div className="menu-button">
-            <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
-             className="btn btn-dark btn-lg" 
-             disabled={false} >MENu</button>
-            </div> */}
-            {/* <div id="menu-screen" className={menuScreenClass}>
-                <div id="menu-div" className="card menu-div animated zoomIn" style={{backgroundColor:"#131313"}}>
-                     <div className="card-body">
-                        <h3 className="card-title  text-center header">MENu</h3>
-                        <ul className="list-group list-group-flush">
-                         <li className="list-group-item bg-secondary alert alert-dark"><span><b>PLAYER1 VS PLAYER2</b></span></li>
-                         <li className="list-group-item bg-secondary alert alert-dark"><span><b>PLAYER VS ALEX</b></span></li>
-                         <li className="list-group-item bg-secondary alert alert-dark"><span><b>PLAYER VS FRIENDS</b></span></li>
-                       </ul>
-                     </div>
-                </div>
-            </div> */}
-          </div>
+           </div>
             
           <div className="row">
                  <div className="col col-lg-2 col-sm-2 offset-lg-1 order-2 order-sm-1 text-center" style={{backgroundColor:"#202121"}}>
@@ -214,7 +197,7 @@ class GAmePvP extends React.Component{
                   {/* <NumberGenerator number={this.state.players[0].number}/> */}
                   {/* {this.state.now === "player1"?btnclass=activeBtn:btnclass=disabledBtn} */}
                   <div style={divStyle} className="pt-1 roll">
-                  <button type="button" onClick={()=>{this.onNumberClick("player1")}} className="btn btn-dark btn-lg"  disabled={this.state.now || this.state.switch}>ROLL</button>
+                  <button type="button" onClick={()=>{this.onNumberClick("player1")}} className="btn btn-dark"  disabled={this.state.now || this.state.switch}>ROLL</button>
                   </div>
                   <div className="score">
                     <span>SCoRE</span>
@@ -242,7 +225,7 @@ class GAmePvP extends React.Component{
                   {/* <NumberGenerator number={this.state.players[1].number}/> */}
                   {console.log("now",this.state.now,"switch",this.state.switch)}
                   <div style={divStyle2} className="pt-1 roll">
-                  <button type="button" onClick={()=>{this.onNumberClick("player2")}} className="btn btn-dark btn-lg" disabled={!this.state.now || this.state.switch} >ROLL</button>
+                  <button type="button" onClick={()=>{this.onNumberClick("player2")}} className="btn btn-dark" disabled={!this.state.now || this.state.switch} >ROLL</button>
                   </div>
                   <div className="text-danger score">
                     <span>SCoRE</span>

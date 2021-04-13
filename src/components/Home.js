@@ -8,8 +8,8 @@ import {
 import './Home.css';
 const Home = ({onRouteChange})=>{
     return(
-      <div className="col-sm-8">
-      <div className="card animated zoomIn" style={{width:"30rem",marginTop:"60%",backgroundColor:"#131313"}}>
+      
+      <div className="card animated zoomIn" style={{width:"30rem",maxWidth:"100vw",marginTop:"40%",backgroundColor:"#131313"}}>
       {/* <img class="card-img-top" src="..." alt="Card image cap"/> */}
       <div className="card-body">
         <h3 className="card-title  text-center header">WELCoME To</h3>
@@ -21,9 +21,6 @@ const Home = ({onRouteChange})=>{
         </ul>
       </div>
      </div>
-  </div>
-     
-
     );
 }
 
