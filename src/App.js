@@ -30,7 +30,7 @@ class App extends Component {
       rollSoundValue:0.1,
       soundProps:[
         {
-          url:introAudio, playStatus:"PLAYING", volume:20, loop:true
+          url:introAudio, playStatus:"PLAYING", volume:8, loop:true
         },
         {
           url:gameAudio, playStatus:"PLAYING", volume:5, loop:true
@@ -38,6 +38,7 @@ class App extends Component {
       ]
     }
     this.onMenuButtonClick = this.onMenuButtonClick.bind(this);
+    this.onHomeButtonClick = this.onHomeButtonClick.bind(this);
   
   }
   
@@ -64,6 +65,11 @@ class App extends Component {
   onMenuButtonClick(){
     console.log("menu");
     this.setState({menuOpen:!this.state.menuOpen});
+  }
+
+  onHomeButtonClick(){
+    console.log("home");
+    this.setState({menuOpen:!this.state.menuOpen,route:"home"});
   }
   
   onRouteChange =(route)=>{
@@ -105,7 +111,7 @@ class App extends Component {
           <HashRouter>
               <div className="d-flex justify-content-sm-center">
               <Particles style={{backgroundColor:"black"}} params={particleParams} className="particles"/>
-              <Sound url={soundProps.url} muted="muted" playStatus={soundProps.playStatus} volume={soundProps.volume} loop={true}/>
+              <Sound url={soundProps.url}  playStatus={soundProps.playStatus} volume={soundProps.volume} loop={true}/>
                 <div>
                 {/* <div className="position-fixed" style={{ bottom: "95%",right: "3%",zIndex:1}}>
                    <label style={{marginRight:"8px"}}>Background Music</label>
@@ -119,52 +125,8 @@ class App extends Component {
                       sound={this.state.sound}
                       rollSound={this.state.rollSound}
                       rollSoundChange={this.rollSoundChange}
+                      onHomeButtonClick={this.onHomeButtonClick}
                 />
-               {/* <div className="menu-button">
-               <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
-               className="btn btn-dark btn-lg" 
-               disabled={false} >MENU</button>
-              </div> */}
-              {/* <div id="menu-screen" className={menuScreenClass}> */}
-              {/* <div id="menu-div" className="card menu-div animated zoomIn" style={{backgroundColor:"#131313"}}> */}
-                  {/* <img class="card-img-top" src="..." alt="Card image cap"/> */}
-                 {/* <div className="card-body">
-                    <h3 className="card-title  text-center header">MENu</h3>
-                    <ul className="list-group list-group-flush">
-                     <li className="list-group-item bg-secondary alert alert-dark">
-                       <span><b>BACKGROUND SOUND</b></span>
-                       <input id="sound" type="checkBox" onClick={this.playPause} 
-                      //  value="PAUSE"
-                       checked={this.state.sound}
-                        style={{marginLeft:"15px"}}/>
-                      </li>
-                     <li className="list-group-item bg-secondary alert alert-dark">
-                       <span><b>ROLLING SOUNG</b></span>
-                       <input id="sound" type="checkBox" onClick={this.rollSoundChange} 
-                              value="PAUSE" checked={this.state.rollSound}
-                              style={{marginLeft:"15px"}}/>
-                      </li>
-                     <li className="list-group-item bg-secondary alert alert-dark">
-                         <ul style={{paddingLeft:"5px",listStyleType:"disc"}}>
-                           <b>
-                           <li>Spaceships of the <span style={{color:'#e21414'}}>Red Planet</span> & 
-                           <span style={{color:'yellow'}}>Yellow Planet</span> want to go to The Sector 64</li>
-                           <li>The first spaceship which arrives at sector 64 will win the space race</li>
-                           <li>Some sectors have connected with WORMHOLES</li>
-                           <li>If a spaceship enters a BLACKHOLE it will come out from the relevant WHITEHOLE</li>
-                           </b>
-                         </ul>
-                         <spn>by <a href="https://github.com/NaviduRoshika" style={{color:"#124277"}} target="_blank">NaviduRoshika</a></spn>
-                      </li>
-                   </ul>
-                   <div className="back-button">
-                      <button type="button" onClick={()=>{this.onMenuButtonClick()}} 
-                       className="btn btn-dark btn-lg" 
-                       disabled={false} >BACK</button>
-                    </div>
-                 </div>
-            </div>
-        </div> */}
         <Switch>
               <Route path="/pvp">
               <GamePvP mode={"pvp"} rollP={roll}/>
@@ -173,7 +135,8 @@ class App extends Component {
               <GamePvP rollP={roll} mode={"pva"}/>
               </Route>
               <Route path="/">
-                <Home onRouteChange={this.onRouteChange}/>
+                <Home onRouteChange={this.onRouteChange} playPause={this.playPause} 
+                      sound={this.state.sound}/>
                </Route>
             </Switch>
             </div> 
@@ -187,7 +150,7 @@ class App extends Component {
 }
 
 
-const Menu =({menuScreenClass,playPause,onMenuButtonClick,sound,rollSoundChange,rollSound})=> {
+const Menu =({menuScreenClass,playPause,onMenuButtonClick,sound,rollSoundChange,rollSound,onHomeButtonClick})=> {
   // return <h2>Home</h2>;
   return (
     <>
@@ -235,7 +198,7 @@ const Menu =({menuScreenClass,playPause,onMenuButtonClick,sound,rollSoundChange,
                        className="btn btn-dark" 
                        disabled={false} >BACK</button>
                       <Link to="/"><button type="button" 
-                      onClick={()=>{onMenuButtonClick()}}
+                      onClick={()=>{onHomeButtonClick()}}
                        className="btn btn-dark ml-3" 
                        disabled={false} >
                         HOME
