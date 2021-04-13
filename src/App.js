@@ -15,7 +15,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  HashRouter
 } from "react-router-dom";
 
 class App extends Component {
@@ -101,7 +102,7 @@ class App extends Component {
       )
       
       return (
-          <Router>
+          <HashRouter>
               <div className="d-flex justify-content-sm-center">
               <Particles style={{backgroundColor:"black"}} params={particleParams} className="particles"/>
               <Sound url={soundProps.url} muted="muted" playStatus={soundProps.playStatus} volume={soundProps.volume} loop={true}/>
@@ -178,7 +179,7 @@ class App extends Component {
             </div> 
             </div>
            
-          </Router>
+          </HashRouter>
       );
  }
 
