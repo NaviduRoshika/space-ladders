@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/space-ladders/static/css/main.b78524f8.chunk.css",
+    "main.js": "/space-ladders/static/js/main.cef11301.chunk.js",
+    "main.js.map": "/space-ladders/static/js/main.cef11301.chunk.js.map",
+    "runtime-main.js": "/space-ladders/static/js/runtime-main.366b2ae7.js",
+    "runtime-main.js.map": "/space-ladders/static/js/runtime-main.366b2ae7.js.map",
+    "static/css/2.bada8f97.chunk.css": "/space-ladders/static/css/2.bada8f97.chunk.css",
+    "static/js/2.c591817a.chunk.js": "/space-ladders/static/js/2.c591817a.chunk.js",
+    "static/js/2.c591817a.chunk.js.map": "/space-ladders/static/js/2.c591817a.chunk.js.map",
+    "index.html": "/space-ladders/index.html",
+    "precache-manifest.17a07eb3ef023692a6d105c03626d256.js": "/space-ladders/precache-manifest.17a07eb3ef023692a6d105c03626d256.js",
+    "service-worker.js": "/space-ladders/service-worker.js",
+    "static/css/2.bada8f97.chunk.css.map": "/space-ladders/static/css/2.bada8f97.chunk.css.map",
+    "static/css/main.b78524f8.chunk.css.map": "/space-ladders/static/css/main.b78524f8.chunk.css.map",
+    "static/js/2.c591817a.chunk.js.LICENSE.txt": "/space-ladders/static/js/2.c591817a.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/space-ladders/static/media/Starjedi.cc3019aa.ttf",
+    "static/media/click2.mp3": "/space-ladders/static/media/click2.97cf18f7.mp3",
+    "static/media/dice.gif": "/space-ladders/static/media/dice.e0ba8ae9.gif",
+    "static/media/five.png": "/space-ladders/static/media/five.cdc9f363.png",
+    "static/media/four.png": "/space-ladders/static/media/four.7b74235b.png",
+    "static/media/gamePlay.mp3": "/space-ladders/static/media/gamePlay.8444f346.mp3",
+    "static/media/icon3.png": "/space-ladders/static/media/icon3.b45aa86c.png",
+    "static/media/icon4.png": "/space-ladders/static/media/icon4.fe95417f.png",
+    "static/media/iconB.png": "/space-ladders/static/media/iconB.4a354d4b.png",
+    "static/media/iconW.png": "/space-ladders/static/media/iconW.bd5ff1c2.png",
+    "static/media/intro.mp3": "/space-ladders/static/media/intro.83a7d15c.mp3",
+    "static/media/one.png": "/space-ladders/static/media/one.ccb88fff.png",
+    "static/media/six.png": "/space-ladders/static/media/six.3c3a4241.png",
+    "static/media/three.png": "/space-ladders/static/media/three.a49ab82b.png",
+    "static/media/two.png": "/space-ladders/static/media/two.b58ddbfc.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.366b2ae7.js",
+    "static/css/2.bada8f97.chunk.css",
+    "static/js/2.c591817a.chunk.js",
+    "static/css/main.b78524f8.chunk.css",
+    "static/js/main.cef11301.chunk.js"
+  ]
+}
